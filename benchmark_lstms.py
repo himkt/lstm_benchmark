@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
     device = 'GPU' if args.gpuid >= 0 else 'CPU'
 
-    with open(f'{device}.summary.md', 'w') as result_fp:
+    with open(f'result/{device}.summary.md', 'w') as result_fp:
         print(f'## {device}\n', file=result_fp)
         print('```', file=result_fp)
         print(f'chainer lstm: {mean_time_lstm_chainer:.4f} ({std_time_lstm_chainer:.4f})', file=result_fp)  # NOQA
@@ -95,6 +95,6 @@ if __name__ == '__main__':
     label_list = ['lstm_chainer', 'n_step_lstm_chainer', 'lstm_pytorch']
 
     for label, times in zip(label_list, times_list):
-        with open(f'{label}_{device}.time.txt', 'w') as time_fp:
+        with open(f'result/{label}_{device}.time.txt', 'w') as time_fp:
             for time_item in times:
                 print(time_item, file=time_fp)

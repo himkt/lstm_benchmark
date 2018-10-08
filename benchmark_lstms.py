@@ -18,7 +18,10 @@ if __name__ == '__main__':
     shape = (30, 32, 200)
     input_tensor = numpy.random.random(shape)
     input_tensor = input_tensor.astype(numpy.float32)
-    input_list_chainer = list(input_tensor)
+
+    # NStepLSTM takes batch-wise inputs
+    # -> (batch_size, seq_length, feature_dim)
+    input_list_chainer = list(input_tensor.transpose(1, 0, 2))
 
     # make variables and tensor
     # (seq_length, batch_size, feature_dim)

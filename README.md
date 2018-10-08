@@ -3,10 +3,14 @@
 
 ### GPU
 
+> python benchmark_lstms.py --gpuid 0 --trial 100
+
 https://github.com/himkt/lstm_benchmark/blob/master/result/GPU.summary.md
 
 
 ### CPU
+
+> python benchmark_lstms.py --gpuid -1 --trial 100
 
 https://github.com/himkt/lstm_benchmark/blob/master/result/CPU.summary.md
 

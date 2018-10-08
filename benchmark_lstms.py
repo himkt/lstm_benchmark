@@ -54,13 +54,15 @@ if __name__ == '__main__':
         n_step_lstm_layer(None, None, input_list_chainer)
         times_n_step_lstm_chainer.append(time.time() - start)
 
-    def forward_lstm_layer(input_list_chainer):
-        for input_vector in input_list_chainer:
+    def forward_lstm_layer(input_tensor_chainer):
+        seq_length, _, _ = input_tensor_chainer.shape
+        for time_step in range(seq_length):
+            input_vector = input_tensor_chainer[time_step, :, :]
             lstm_layer(input_vector)
 
     for _ in range(n_trial):
         start = time.time()
-        forward_lstm_layer(input_list_chainer)
+        forward_lstm_layer(input_tensor_chainer)
         times_lstm_chainer.append(time.time() - start)
 
     for _ in range(n_trial):
